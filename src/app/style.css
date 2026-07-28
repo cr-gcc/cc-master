@@ -1,1 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  /* Superficies — bg-header, bg-footer, bg-main, bg-surface */
+  --color-header: var(--color-header);
+  --color-footer: var(--color-footer);
+  --color-main: var(--color-main);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+
+  /* Texto — text-text-primary, text-text-secondary */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+
+  /* Acciones — bg-primary, hover:bg-primary-hover */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+
+  /* Semánticos — bg-success, bg-warning, bg-error */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+}
+
+body {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}

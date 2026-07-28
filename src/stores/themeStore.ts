@@ -1,0 +1,49 @@
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import type { AppTheme } from '@/themes'
+import { defaultTheme, applyTheme } from '@/themes'
+
+export const useThemeStore = defineStore('theme', () => {
+  const theme = ref<AppTheme>(defaultTheme)
+  const isLoading = ref(false)
+  const error = ref<string | null>(null)
+
+  /**
+   * Inicializa el tema:
+   * 1. Aplica el tema cacheado (o default) inmediatamente → sin FOUC
+   * 2. Cuando haya API: consulta en background y re-aplica si cambió
+   */
+  async function initTheme() {
+    // Aplicar lo que tengamos (cache via persistedstate o default)
+    applyTheme(theme.value.colors, theme.value.slug)
+
+    // TODO: Cuando se implemente la API, descomentar:
+    // try {
+    //   isLoading.value = true
+    //   const remoteTheme = await fetchTenantTheme()
+    //   if (remoteTheme.id !== theme.value.id) {
+    //     theme.value = remoteTheme
+    //     applyTheme(remoteTheme.colors, remoteTheme.slug)
+    //   }
+    // } catch (e) {
+    //   error.value = e instanceof Error ? e.message : 'Error loading theme'
+    //   console.warn('[ThemeStore] Using cached/default theme:', error.value)
+    // } finally {
+    //   isLoading.value = false
+    // }
+  }
+
+  /**
+   * Cambia el tema activo (ej: desde un panel de admin o selector).
+   */
+  function setTheme(newTheme: AppTheme) {
+    theme.value = newTheme
+    applyTheme(newTheme.colors, newTheme.slug)
+  }
+
+  return { theme, isLoading, error, initTheme, setTheme }
+}, {
+  persist: {
+    pick: ['theme'],
+  },
+})

@@ -1,11 +1,18 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
+  import { useThemeStore } from '@/stores/themeStore'
 
   import MainLayout from '@layouts/MainLayout.vue'
   import BlankLayout from '@layouts/BlankLayout.vue'
 
   const route = useRoute();
+  const themeStore = useThemeStore();
+
+  // Inicializar tema al montar la app
+  onMounted(() => {
+    themeStore.initTheme();
+  });
 
   const layouts = {
     main: MainLayout,
