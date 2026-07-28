@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <div class="bg-cyan-700">
+    <h1 class="text-2xl">Hola Mundo</h1>
+  </div>
 </template>
