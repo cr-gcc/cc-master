@@ -4,9 +4,13 @@ import AppFooter from '@/components/organisms/Footer/AppFooter.vue';
 </script>
 
 <template>
-    <AppHeader />
-    <div id="main-layout">
-        <slot />
+    <div class="min-h-screen flex flex-col">
+        <AppHeader />
+        <main id="main" class="bg-main flex-1 p-4">
+            <div class="mx-auto w-full px-4 sm:px-6 lg:px-8">
+                <slot />
+            </div>
+        </main>
+        <AppFooter />
     </div>
-    <AppFooter />
 </template>
