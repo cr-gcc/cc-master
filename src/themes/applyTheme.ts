@@ -5,8 +5,8 @@ import type { ThemeColors } from './types'
  * Función pura — su único side effect es el DOM.
  *
  * Convención de nombres:
- *   ThemeColors.textPrimary  →  --color-text-primary  (CSS var)
- *   En Tailwind:  text-text-primary, bg-text-primary, etc.
+ *   ThemeColors.tPrimary  →  --color-t-primary  (CSS var)
+ *   En Tailwind:  text-t-primary, bg-t-primary, etc.
  */
 export function applyTheme(colors: ThemeColors, themeSlug: string): void {
   const root = document.documentElement
@@ -19,7 +19,7 @@ export function applyTheme(colors: ThemeColors, themeSlug: string): void {
   root.setAttribute('data-theme', themeSlug)
 }
 
-/** textPrimary → text-primary */
+/** tPrimary → t-primary */
 function camelToKebab(str: string): string {
   return str.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
 }

@@ -11,12 +11,14 @@ export interface ThemeColors {
   border: string
 
   // Texto
-  textPrimary: string
-  textSecondary: string
+  tPrimary: string
+  tSecondary: string
 
   // Acciones
   primary: string
   primaryHover: string
+  secondary: string
+  secondaryHover: string
 
   // Semánticos
   success: string

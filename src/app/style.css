@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Superficies — bg-header, bg-footer, bg-main, bg-surface */
   --color-header: var(--color-header);
@@ -10,13 +12,15 @@
   --color-surface: var(--color-surface);
   --color-border: var(--color-border);
 
-  /* Texto — text-text-primary, text-text-secondary */
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
+  /* Texto — text-t-primary, text-t-secondary */
+  --color-t-primary: var(--color-t-primary);
+  --color-t-secondary: var(--color-t-secondary);
 
-  /* Acciones — bg-primary, hover:bg-primary-hover */
+  /* Acciones — bg-primary, hover:bg-primary-hover, etc */
   --color-primary: var(--color-primary);
   --color-primary-hover: var(--color-primary-hover);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
 
   /* Semánticos — bg-success, bg-warning, bg-error */
   --color-success: var(--color-success);
