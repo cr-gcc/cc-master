@@ -1,3 +1,3 @@
 export type { AppTheme, ThemeColors } from './types'
-export { defaultTheme } from './defaults'
+export { lightTheme, darkTheme } from './defaults'
 export { applyTheme } from './applyTheme'

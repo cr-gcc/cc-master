@@ -17,6 +17,12 @@ export function applyTheme(colors: ThemeColors, themeSlug: string): void {
   }
 
   root.setAttribute('data-theme', themeSlug)
+  
+  if (themeSlug === 'dark') {
+    root.classList.add('dark')
+  } else {
+    root.classList.remove('dark')
+  }
 }
 
 /** tPrimary → t-primary */
