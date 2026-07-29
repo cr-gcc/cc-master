@@ -17,14 +17,14 @@
                     <nav aria-label="Global" class="hidden md:block">
                         <ul class="flex items-center gap-6 text-md">
                             <li>
-                                <a href="#" class="transition text-white hover:text-white/75 dark:text-t-primary dark:hover:text-t-secondary">
+                                <router-link :to="{name: 'seller-call'}" class="transition text-white hover:text-white/75 dark:text-t-primary dark:hover:text-t-secondary">
                                     Llamada
-                                </a>
+                                </router-link>
                             </li>
                             <li>
-                                <a href="#" class="transition text-white hover:text-white/75 dark:text-t-primary dark:hover:text-t-secondary">
-                                    Score
-                                </a>
+                                <router-link :to="{name: 'seller-statistics'}" class="transition text-white hover:text-white/75 dark:text-t-primary dark:hover:text-t-secondary">
+                                    Estadísticas
+                                </router-link>
                             </li>
                             <li>
                                 <BaseDropdown>
