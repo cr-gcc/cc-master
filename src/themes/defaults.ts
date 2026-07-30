@@ -37,7 +37,7 @@ const darkTheme: AppTheme = {
     colors: {
         // Layout
         header: '#111827',          // gray-900
-        footer: '#030712',          // gray-950
+        footer: '#111827',          // gray-900
         // Fondo
         main: '#030712',            // gray-950
         surface: '#111827',         // gray-900
