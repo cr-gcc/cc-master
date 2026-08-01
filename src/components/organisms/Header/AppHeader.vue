@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import BaseDropdown from '@components/molecules/BaseDropdown.vue';
+    import DropdownBase from '@components/molecules/DropdownBasic.vue';
     import { useThemeStore } from '@/stores/themeStore';
     import { lightTheme, darkTheme } from '@/themes/defaults';
 
@@ -46,7 +46,7 @@
                                 </button>
                             </li>
                             <li>
-                                <BaseDropdown>
+                                <DropdownBase>
                                     <template #trigger>
                                         <a href="#" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
                                             <i class="fas fa-user-circle text-2xl"></i>
@@ -69,7 +69,7 @@
                                         Cerrar sesión
                                       </button>
                                     </template>
-                                </BaseDropdown>
+                                </DropdownBase>
                             </li>
                         </ul>
                     </nav>

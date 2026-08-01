@@ -1,19 +1,24 @@
 <script setup lang="ts">
-    defineProps<{
+    withDefaults(defineProps<{
+        titleSize?: string;
+        textSize?: string;
         title?: string;
         icon?: string;
         items: any[];
-    }>();
+    }>(), {
+        titleSize: 'text-lg',
+        textSize: 'text-sm',
+    })
 </script>
 
 <template>
     <article class="rounded-xl border border-border bg-surface p-4">
         <div v-if="title || icon" class="flex items-center gap-4">
             <div v-if="icon">
-                <i :class="[icon, 'text-2xl text-t-primary']"></i>
+                <i :class="[icon, titleSize, 'text-t-primary']"></i>
             </div>
             <div v-if="title">
-                <h4 class="text-2xl text-t-primary">{{ title }}</h4>
+                <span :class="titleSize" class="text-t-primary">{{ title }}</span>
             </div>
         </div>
         <ul class="mt-4 space-y-2">
