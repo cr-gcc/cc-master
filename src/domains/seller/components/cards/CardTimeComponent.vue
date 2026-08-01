@@ -11,6 +11,7 @@ const activities = [
 
 <template>
     <CardBasicInfo 
+        textSize="text-2xl"
         title="Actividades" 
         icon="fas fa-clock" 
         :items="activities"

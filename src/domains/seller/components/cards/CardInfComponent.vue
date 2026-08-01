@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import CardBasicInfo from '@/components/molecules/CardBasicInfo.vue';
+    import CardBasicInfo from '@/components/molecules/CardBasicInfo.vue';
 
-const results = [
-    { icon: 'fa-solid fa-check-circle', label: 'Exitosas', value: 1 },
-    { icon: 'fa-solid fa-xmark-circle', label: 'Rechazadas', value: 0 },
-    { icon: 'fa-solid fa-exclamation-circle', label: 'Pendientes de revisión', value: 0 },
-    { icon: 'fa-solid fa-hourglass-start', label: 'En evaluación', value: 0 },
-    { icon: 'fa-solid fa-calendar-check', label: 'Agendadas', value: 0 }
-];
+    const results = [
+        { textSize: 'text-2xl', icon: 'fa-solid fa-check-circle', label: 'Exitosas', value: 1 },
+        { textSize: 'text-2xl', icon: 'fa-solid fa-xmark-circle', label: 'Rechazadas', value: 0 },
+        { textSize: 'text-2xl', icon: 'fa-solid fa-exclamation-circle', label: 'Pendientes de revisión', value: 0 },
+        { textSize: 'text-2xl', icon: 'fa-solid fa-hourglass-start', label: 'En evaluación', value: 0 },
+        { textSize: 'text-2xl', icon: 'fa-solid fa-calendar-check', label: 'Agendadas', value: 0 }
+    ];
 </script>
 
 <template>
     <CardBasicInfo 
+        textSize="text-2xl"
         title="Resultados del día (Llamadas)" 
         icon="fas fa-chart-line" 
         :items="results"
