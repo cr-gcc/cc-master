@@ -1,10 +1,10 @@
 <script setup lang="ts">
     withDefaults(defineProps<{
-        size: string
-        bgColor: string
-        textColor: string
-        icon: string
-        alt: string
+        size?: string
+        bgColor?: string
+        textColor?: string
+        icon?: string
+        alt?: string
     }>(), {
         size: 'h-9 w-9',
         bgColor: '#fff',
