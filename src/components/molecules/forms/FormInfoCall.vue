@@ -1,0 +1,60 @@
+<script setup lang="ts">
+    import CardFrameForm from '@/components/atoms/cards/CardFrameForm.vue';
+    import InputLable from '@/components/atoms/inputs/InputLable.vue';
+</script>
+
+<template>
+    <CardFrameForm>
+        <template #customized-form>
+            <h3 class="text-t-primary text-2xl mb-1">
+                Captura de información
+            </h3>
+            <h4 class="text-t-primary text-lg mb-1">
+                Cliente
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+                <div>
+                    <InputLable name="name" type="text" label="Nombre" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div class="md:col-span-2">
+                    <InputLable name="lastname" type="text" label="Apellidos" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="age" type="number" label="Edad" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="email" type="email" label="Email" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="phone" type="number" label="Teléfono" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+            </div>
+            <h4 class="text-t-primary text-lg mb-1">
+                Dirección
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <InputLable name="street" type="text" label="Calle" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="number_ext" type="number" label="Número Ext" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="number_int" type="number" label="Número Int" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="neighborhood" type="text" label="Colonia" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="city" type="text" label="Ciudad" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="state" type="text" label="Estado" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+                <div>
+                    <InputLable name="zip_code" type="number" label="Código Postal" labelText="text-xs" inputText="text-xs" textColor="text-t-secondary" />
+                </div>
+            </div>
+        </template>
+    </CardFrameForm>
+</template>
