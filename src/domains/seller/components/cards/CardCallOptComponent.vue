@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import CardBasicOptions from '@/components/molecules/CardBasicOptions.vue';
+    import CardBasicOptions from '@/components/molecules/cards/CardBasicOptions.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     
     function endCall() {
@@ -18,12 +18,16 @@
                 bgColor="bg-surface" 
                 icon="fa-solid fa-phone-slash" 
                 text="Colgar"
+                padding="px-2 py-1" 
+                textSize="text-sm" 
                 @click="endCall"
             />
             <ButtonBlockIcon 
                 bgColor="bg-surface" 
                 icon="fa-solid fa-phone" 
                 text="Siguiente"
+                padding="px-2 py-1" 
+                textSize="text-sm" 
                 @click="nextCall"
             />
         </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardBasicInfo from '@/components/molecules/CardBasicInfo.vue';
+import CardBasicInfo from '@/components/molecules/cards/CardBasicInfo.vue';
 
 const activities = [
     { icon: 'fa-solid fa-desktop', label: 'Tiempo de conexión', value: '00:00:00' },

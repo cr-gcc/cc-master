@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import CardBasicInfo from '@/components/molecules/CardBasicInfo.vue';
+    import CardBasicInfo from '@/components/molecules/cards/CardBasicInfo.vue';
 
     const results = [
         { textSize: 'text-2xl', icon: 'fa-solid fa-check-circle', label: 'Exitosas', value: 1 },
