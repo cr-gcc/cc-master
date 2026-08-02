@@ -1,7 +1,6 @@
 <script setup lang="ts">
     import CardBasicOptions from '@/components/molecules/cards/CardBasicOptions.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
-
 </script>
 
 <template>

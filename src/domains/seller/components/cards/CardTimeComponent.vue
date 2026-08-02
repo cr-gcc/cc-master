@@ -4,7 +4,7 @@ import CardBasicInfo from '@/components/molecules/cards/CardBasicInfo.vue';
 const activities = [
     { icon: 'fa-solid fa-desktop', label: 'Tiempo de conexión', value: '00:00:00' },
     { icon: 'fa-solid fa-utensils', label: 'Tiempo de comida', value: '00:00:00' },
-    { icon: 'fa-solid fa-phone-slash', label: 'Tiempo de descanso', value: '00:00:00' },
+    { icon: 'fa-solid fa-phone-slash', label: 'Tiempo de descanso / dinámica', value: '00:00:00' },
     { icon: 'fa-solid fa-restroom', label: 'Tiempo sanitario', value: '00:00:00' }
 ];
 </script>

@@ -29,13 +29,18 @@
                     <nav aria-label="Global" class="hidden md:block">
                         <ul class="flex items-center gap-6 text-md">
                             <li>
-                                <router-link :to="{name: 'seller-call'}" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
-                                    Llamada
+                                <router-link :to="{name: 'seller-home'}" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                                    Inicio
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'seller-statistics'}" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
                                     Estadísticas
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'seller-call'}" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                                    Llamada
                                 </router-link>
                             </li>
                             <li class="border-l-2 border-t-secondary h-8"></li>

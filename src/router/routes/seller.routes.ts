@@ -1,14 +1,14 @@
 import { type RouteRecordRaw } from "vue-router";
-import Seller from "@/domains/seller/pages/SellerPage.vue";
+import Home from "@/domains/seller/pages/HomePage.vue";
 import Statistics from "@/domains/seller/pages/StatisticsPage.vue";
 import Call from "@/domains/seller/pages/CallPage.vue";
-
 
 const sellerRoutes: RouteRecordRaw[] = [
     {
         path: "/seller",
-        name: "seller",
-        component: Seller,
+        alias: "/seller/home",
+        name: "seller-home",
+        component: Home,
         meta: { layout: 'main' },
     },
     {
