@@ -15,7 +15,7 @@
 </script>
 
 <template>
-    <button :class="`${size} ${bgColor} flex items-center justify-center rounded-full border border-border cursor-pointer`" :title="alt">
-        <i :class="`${icon} ${textColor}`"></i>
+    <button :class="`${size} ${bgColor} ${textColor} border border-border rounded-full hover:bg-secondary hover:text-white flex items-center justify-center cursor-pointer`" :title="alt">
+        <i :class="icon"></i>
     </button>
 </template>
