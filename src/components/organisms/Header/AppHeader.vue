@@ -1,9 +1,13 @@
 <script setup lang="ts">
+    import { ref } from 'vue';
     import DropdownBase from '@components/molecules/DropdownBasic.vue';
+    import ModalProfileUser from '@components/organisms/modals/ModalProfileUser.vue';
     import { useThemeStore } from '@/stores/themeStore';
     import { lightTheme, darkTheme } from '@/themes/defaults';
 
     const themeStore = useThemeStore();
+
+    const showProfileUserModal = ref(false);
 
     const toggleTheme = () => {
         if (themeStore.theme.slug === 'dark') {
@@ -45,9 +49,10 @@
                             </li>
                             <li class="border-l-2 border-t-secondary h-8"></li>
                             <li>
-                                <button @click="toggleTheme" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary cursor-pointer">
+                                <button @click="toggleTheme" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary cursor-pointer" :title="themeStore.theme.slug === 'light' ? 'Tema oscuro' : 'Tema claro'">
                                     <i v-if="themeStore.theme.slug === 'light'" class="fa-solid fa-moon text-2xl"></i>
-                                    <i v-else class="fa-solid fa-circle text-2xl"></i>
+                                    <i v-else class="fa-solid fa-circle text-2xl"
+                                    ></i>
                                 </button>
                             </li>
                             <li>
@@ -61,6 +66,7 @@
                                       <div>
                                         <a
                                           href="#"
+                                          @click.prevent="showProfileUserModal = true"
                                           class="block px-3 py-2 text-sm font-medium text-t-primary transition-colors hover:bg-main"
                                           role="menuitem"
                                         >
@@ -107,4 +113,5 @@
             </div>
         </div>
     </header>
+    <ModalProfileUser v-model="showProfileUserModal" />
 </template>

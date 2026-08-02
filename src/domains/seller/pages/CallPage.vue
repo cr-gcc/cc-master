@@ -1,12 +1,12 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import CardFrame from '@/components/atoms/cards/CardFrame.vue';
-    import CardCallOptComponent from '@/domains/seller/components/cards/CardCallOptComponent.vue';
-    import CardSupportMaterial from '@/domains/seller/components/cards/CardSupportMaterial.vue';
-    import FormInfoCall from '@/components/molecules/forms/FormInfoCall.vue';
     import ButtonCircleIcon from '@/components/atoms/buttons/ButtonCircleIcon.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
-
+    import CardCallOptComponent from '@/domains/seller/components/cards/CardCallOptComponent.vue';
+    import CardSupportMaterial from '@/domains/seller/components/cards/CardSupportMaterial.vue';
+    import FormInfoCall from '@/domains/seller/components/forms/FormInfoCall.vue';
+    
     const text1 = "Agente";
     const text2 = "Producto";
     const text3 = "Finalizar venta";
@@ -103,15 +103,13 @@
                             v-if="indexTab > 1"
                             @click="previousTab()"
                             bgColor="bg-surface" 
-                            icon="fa-solid fa-arrow-left" 
-                            alt="Anterior"
+                            icon="fa-solid fa-arrow-left"
                         />
                         <ButtonCircleIcon 
                             v-if="indexTab < maxIndexTab"
                             @click="nextTab()"
                             bgColor="bg-surface" 
-                            icon="fa-solid fa-arrow-right" 
-                            alt="Siguiente" 
+                            icon="fa-solid fa-arrow-right"
                         />
                     </div>    
                 </div>
