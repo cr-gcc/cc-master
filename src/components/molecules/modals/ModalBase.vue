@@ -12,6 +12,8 @@
         buttonSize?: string
         buttonPadding?: string
         buttonTextSize?: string
+        closeButton?: boolean
+        loadingPB?: boolean
     }>(), {
         modalSize: 'w-full',
         modalId: 'modal',
@@ -20,7 +22,9 @@
         title: '',
         buttonSize: 'w-auto',
         buttonPadding: 'px-2 py-1',
-        buttonTextSize: 'text-sm'
+        buttonTextSize: 'text-sm',
+        closeButton: true,
+        loadingPB: false
     });
 
     // Define model for controlling visibility
@@ -76,6 +80,7 @@
                 <div id="modal-footer" class="flex justify-end gap-1">
                     <slot name="modal-footer"></slot>
                     <ButtonBlockIcon 
+                        v-if="closeButton"
                         bgColor="bg-surface"
                         text="Cerrar"
                         :size="buttonSize"
@@ -85,7 +90,7 @@
                     />
                 </div>
                 <!-- Loading -->
-                 <div id="modal-loading">
+                 <div v-if="loadingPB" id="modal-loading">
                     <ProgressBar />
                  </div>
             </div>
