@@ -2,14 +2,13 @@
     import { ref } from 'vue';
     import CardFrame from '@/components/atoms/cards/CardFrame.vue';
     import ButtonCircleIcon from '@/components/atoms/buttons/ButtonCircleIcon.vue';
-    import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import CardCallOptComponent from '@/domains/seller/components/cards/CardCallOptComponent.vue';
     import CardSupportMaterial from '@/domains/seller/components/cards/CardSupportMaterial.vue';
     import FormInfoCall from '@/domains/seller/components/forms/FormInfoCall.vue';
+    import FormSaveSale from '@/domains/seller/components/forms/FormSaveSale.vue';
     
     const text1 = "Agente";
     const text2 = "Producto";
-    const text3 = "Finalizar venta";
     const body1 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.";
     const body2 = "<strong>There are many variations of passages of Lorem Ipsum available</strong>, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
     const activeTab = ref('tab-1');
@@ -29,7 +28,6 @@
             activeTab.value = `tab-${indexTab.value}`;
         }
     }
-
 </script>
 
 <template>
@@ -79,25 +77,9 @@
                     <FormInfoCall
                         v-else-if="activeTab === 'tab-3'"
                     />     
-                    <CardFrame 
-                        v-else-if="activeTab === 'tab-4'" 
-                        titleSize="text-2xl" 
-                        textSize="text-md" 
-                        :title=text3 
-                        :body=body1 
-                    >
-                        <template #options>
-                            <div class="flex justify-end">
-                                <ButtonBlockIcon 
-                                    bgColor="bg-surface" 
-                                    icon="fa-solid fa-save" 
-                                    text="Guardar" 
-                                    padding="px-2 py-1" 
-                                    textSize="text-sm" 
-                                />
-                            </div>    
-                        </template>
-                    </CardFrame>         
+                    <FormSaveSale
+                        v-else-if="activeTab === 'tab-4'"
+                    />         
                     <div class="flex items-center justify-center gap-1">
                         <ButtonCircleIcon
                             v-if="indexTab > 1"
@@ -121,7 +103,6 @@
                 <div class="mb-3">
                     <CardCallOptComponent />
                 </div>
-                
             </div>
         </div>
     </div>
