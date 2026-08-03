@@ -2,7 +2,7 @@
     import { ref, watch, onMounted } from 'vue';
     import { useRouter } from 'vue-router';
     import ButtonBlockIcon from '@components/atoms/buttons/ButtonBlockIcon.vue';
-    import ProgressBar from '@components/atoms/loadings/ProgresBar.vue';
+    import ProgressBar from '@/components/atoms/loaders/ProgresBar.vue';
     import AlertBasic from '@components/atoms/alerts/AlertBasic.vue';
 
     const router = useRouter();

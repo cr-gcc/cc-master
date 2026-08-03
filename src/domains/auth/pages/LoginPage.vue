@@ -1,9 +1,16 @@
 <script setup lang="ts">
-//
+    import FormLogin from "@/domains/auth/components/FormLogin.vue";
+
+    const mainBanner = "/images/banners/login_banner.png"
 </script>
 
 <template>
-  <div>
-    <h1 class="text-5xl">Login Page</h1>
-  </div>
+    <div class="bg-cover bg-no-repeat bg-center" :style="`background-image: url('${mainBanner}');`">
+        <div class="flex justify-center h-screen">
+            <div class="hidden lg:block lg:w-2/3 h-full"></div>
+            <div class="flex items-center w-full max-w-md px-6 ml-auto lg:w-2/6 bg-black opacity-80">
+                <FormLogin />
+            </div>
+        </div>
+    </div>
 </template>
