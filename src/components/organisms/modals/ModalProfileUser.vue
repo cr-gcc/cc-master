@@ -9,7 +9,7 @@
         name: 'Cristhian Ramirez Saavedra',
         user: 'RARC900812',
         rol: 'Agente de ventas',
-        email: 'cris.ram@outlook.com',
+        email: 'N/A',
     };
 </script>
 

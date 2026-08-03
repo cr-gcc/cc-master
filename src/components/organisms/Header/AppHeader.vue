@@ -1,13 +1,24 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref } from 'vue';    
+    import { useRouter } from 'vue-router';
     import DropdownBase from '@components/molecules/DropdownBasic.vue';
     import ModalProfileUser from '@components/organisms/modals/ModalProfileUser.vue';
     import { useThemeStore } from '@/stores/themeStore';
     import { lightTheme, darkTheme } from '@/themes/defaults';
+    import { useSplashStore } from '@/stores/useSplashScreenStore';
 
+    const router = useRouter();
     const themeStore = useThemeStore();
-
+    const splashScreen = useSplashStore();
     const showProfileUserModal = ref(false);
+
+    const logout = () => {
+        splashScreen.show();
+        setTimeout(() => {
+            splashScreen.hide();
+            router.push({name: 'login'});
+        }, 1000);
+    }
 
     const toggleTheme = () => {
         if (themeStore.theme.slug === 'dark') {
@@ -63,22 +74,25 @@
                                         </a>
                                     </template>
                                     <template #menu>
-                                      <div>
-                                        <a
-                                          href="#"
-                                          @click.prevent="showProfileUserModal = true"
-                                          class="block px-3 py-2 text-sm font-medium text-t-primary transition-colors hover:bg-main"
-                                          role="menuitem"
-                                        >
-                                          Perfil
-                                        </a>
-                                      </div>
-                                      <button
-                                        type="button"
-                                        class="block w-full px-3 py-2 text-sm font-medium text-error transition-colors hover:bg-main ltr:text-left rtl:text-right cursor-pointer"
-                                      >
-                                        Cerrar sesión
-                                      </button>
+                                        <div>
+                                            <button
+                                                type="button"
+                                                @click.prevent="showProfileUserModal = true"
+                                                class="block w-full px-3 py-2 text-sm font-medium ltr:text-left rtl:text-right text-t-primary transition-colors hover:bg-main cursor-pointer"
+                                                role="menuitem"
+                                            >
+                                                Perfil
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button
+                                                type="button"
+                                                @click.prevent="logout()"
+                                                class="block w-full px-3 py-2 text-sm font-medium text-error transition-colors hover:bg-main ltr:text-left rtl:text-right cursor-pointer"
+                                            >
+                                                Cerrar sesión
+                                            </button>
+                                        </div>
                                     </template>
                                 </DropdownBase>
                             </li>

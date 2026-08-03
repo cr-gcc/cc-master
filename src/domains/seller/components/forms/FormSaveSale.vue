@@ -7,7 +7,7 @@
     
     const splash = useSplashStore();
     const showClassifyCall = ref<boolean>(false);
-    const body = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets.";
+    const body = "<p>Excelente, gracias por su confianza.</p><p>Confirmo que hoy está realizando la contratación de su <strong>Protección Antifraude</strong>, la cual quedará asociada a su tarjeta de crédito conforme a las condiciones informadas durante esta llamada.</p><p>Recibirá la información correspondiente a su contratación por los medios registrados con el banco.</p><p>¿Tiene alguna duda antes de finalizar la llamada?</p><p>En nombre de <strong>Banco X</strong>, agradecemos su preferencia y le deseamos un excelente día.</p>";
 
     const saveSale = () => {
         splash.show();
