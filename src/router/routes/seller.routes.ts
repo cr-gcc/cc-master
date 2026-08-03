@@ -9,19 +9,19 @@ const sellerRoutes: RouteRecordRaw[] = [
         alias: "/seller/home",
         name: "seller-home",
         component: Home,
-        meta: { layout: 'main' },
+        meta: { layout: 'main', requiresAuth: true, role: 'seller' },
     },
     {
         path: "/seller/statistics",
         name: "seller-statistics",
         component: Statistics,
-        meta: { layout: 'main' },
+        meta: { layout: 'main', requiresAuth: true, role: 'seller' },
     },
     {
         path: "/seller/call",
         name: "seller-call",
         component: Call,
-        meta: { layout: 'main' },
+        meta: { layout: 'main', requiresAuth: true, role: 'seller' },
     },
 ];
 
