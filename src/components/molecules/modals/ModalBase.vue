@@ -1,8 +1,11 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue';
+    import { useRouter } from 'vue-router';
     import ButtonBlockIcon from '@components/atoms/buttons/ButtonBlockIcon.vue';
     import ProgressBar from '@components/atoms/loadings/ProgresBar.vue';
+    import AlertBasic from '@components/atoms/alerts/AlertBasic.vue';
 
+    const router = useRouter();
     const props = withDefaults(defineProps<{
         modalSize?: string
         modalId: string
@@ -14,6 +17,9 @@
         buttonTextSize?: string
         closeButton?: boolean
         loadingPB?: boolean
+        alertMessage?: string
+        alertType?: string
+        urlRedirect?: string
     }>(), {
         modalSize: 'w-full',
         modalId: 'modal',
@@ -24,7 +30,10 @@
         buttonPadding: 'px-2 py-1',
         buttonTextSize: 'text-sm',
         closeButton: true,
-        loadingPB: false
+        loadingPB: false,
+        alertMessage: '',
+        alertType: 'success',
+        urlRedirect: ''
     });
 
     // Define model for controlling visibility
@@ -55,6 +64,9 @@
     // Helper to close the modal
     const close = () => {
         isOpen.value = false;
+        if (props.urlRedirect) {
+            router.push(props.urlRedirect);
+        }
     };
 </script>
 
@@ -90,9 +102,13 @@
                     />
                 </div>
                 <!-- Loading -->
-                 <div v-if="loadingPB" id="modal-loading">
+                <div v-if="loadingPB" id="modal-loading">
                     <ProgressBar />
-                 </div>
+                </div>
+                <!-- Alerts -->
+                <div v-if="alertMessage" id="modal-alerts">
+                    <AlertBasic :message="alertMessage" :type="alertType" />
+                </div>
             </div>
         </dialog>
     </Teleport>

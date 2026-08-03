@@ -11,14 +11,11 @@
 
     const saveSale = () => {
         splash.show();
-        /*
         setTimeout(() => {
             splash.hide();
             showClassifyCall.value = true;
-        }, 3000);
-        */
+        }, 2000);
     }
-
 </script>
 
 <template>

@@ -1,9 +1,13 @@
 <script setup lang="ts">
+    import { ref } from 'vue';
     import CardBasicOptions from '@/components/molecules/cards/CardBasicOptions.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
+    import ModalClassifyCall from '@/domains/seller/components/modals/ModalClassifyCall.vue'
+
+    const showClassifyCall = ref<boolean>(false);
     
     function endCall() {
-        alert('colgar')
+        showClassifyCall.value = true;
     }
 
     function nextCall() {
@@ -32,4 +36,5 @@
             />
         </template>
     </CardBasicOptions>
+    <ModalClassifyCall v-model="showClassifyCall" />
 </template>
