@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { useThemeStore } from '@/stores/themeStore';
 
 export interface User {
     id: number;
@@ -55,10 +54,10 @@ export const useAuthStore = defineStore('auth', {
         },
         logout() {
             this.setUser(null);
-            
+            /*
             const themeStore = useThemeStore();
             themeStore.clearTheme();
-
+            */
             setTimeout(() => {
                 localStorage.removeItem('auth');
             }, 0);
