@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import AppHeader from '@/components/organisms/header/AppHeader.vue';
-import AppFooter from '@/components/organisms/footer/AppFooter.vue';
+    import AppHeader from '@/components/organisms/header/AppHeader.vue';
+    import AppFooter from '@/components/organisms/footer/AppFooter.vue';
+    import SplashScreen from '@/components/atoms/loadings/SplashScreen.vue';
 </script>
 
 <template>
@@ -13,4 +14,5 @@ import AppFooter from '@/components/organisms/footer/AppFooter.vue';
         </main>
         <AppFooter />
     </div>
+    <SplashScreen />
 </template>
