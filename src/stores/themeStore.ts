@@ -50,7 +50,14 @@ export const useThemeStore = defineStore('theme', () => {
         }
     }
 
-    return { theme, isLoading, error, initTheme, setTheme }
+    function clearTheme() {
+        setTheme(lightTheme)
+        setTimeout(() => {
+            localStorage.removeItem('theme')
+        }, 0)
+    }
+
+    return { theme, isLoading, error, initTheme, setTheme, clearTheme }
 }, {
     persist: {
         pick: ['theme'],

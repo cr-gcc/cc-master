@@ -20,6 +20,9 @@
         modelValue: '',
         disabled: false
     })
+    defineEmits<{
+        (e: 'update:modelValue', value: string): void
+    }>()
 </script>
 
 <template>
@@ -27,6 +30,14 @@
         <label :for="name" :class="`${labelText} ${textColor} block mb-0`">
             {{ label }}
         </label>
-        <input :id="name" :name="name" :type="type" :value="modelValue" :disabled="disabled" :class="`w-full ${inputSize} ${inputText} ${textColor} border border-border rounded-md`" />
+        <input 
+            :id="name" 
+            :name="name" 
+            :type="type" 
+            :value="modelValue" 
+            :disabled="disabled" 
+            :class="`w-full ${inputSize} ${inputText} ${textColor} border border-border rounded-md`" 
+            @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+        />
     </div>
 </template>

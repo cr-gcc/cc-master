@@ -6,18 +6,23 @@
     import { useThemeStore } from '@/stores/themeStore';
     import { lightTheme, darkTheme } from '@/themes/defaults';
     import { useSplashStore } from '@/stores/useSplashScreenStore';
+    import { useAuthStore } from '@/stores/useAuthStore';
 
     const router = useRouter();
     const themeStore = useThemeStore();
     const splashScreen = useSplashStore();
     const showProfileUserModal = ref(false);
+    const authStore = useAuthStore();
 
     const logout = () => {
         splashScreen.show();
+        
         setTimeout(() => {
             splashScreen.hide();
+            authStore.logout();
+            
             router.push({name: 'login'});
-        }, 1000);
+        }, 2000);
     }
 
     const toggleTheme = () => {
