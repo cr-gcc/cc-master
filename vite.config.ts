@@ -6,7 +6,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
-    const useHash = env.VITE_USE_HASH === 'true';
+    const useHash = env.VITE_USE_HASH == 'true' ? true : false;
     const base = useHash ? env.VITE_BASE_URL_HASH : (env.VITE_BASE_URL || '/');
 
     return {
