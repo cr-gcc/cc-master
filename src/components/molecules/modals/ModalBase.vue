@@ -77,7 +77,7 @@
             :id="modalId"
             @cancel.prevent
             @close="close"
-            :class="`backdrop:bg-black/60 bg-transparent border-0 outline-none p-0 m-auto transition-all duration-300 ${modalSize}`"
+            :class="`backdrop:bg-black/60 bg-transparent border-0 outline-none p-0 m-auto transition-all duration-300 sm:w-full sm:h-full md:w-auto md:h-auto lg:${modalSize} lg:h-auto`"
         >
             <div class="bg-surface border border-border text-t-primary px-3 py-1.5 rounded-sm flex flex-col">
                 <!-- Header -->

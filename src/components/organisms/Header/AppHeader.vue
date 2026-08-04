@@ -201,7 +201,7 @@
                         <button
                             type="button"
                             @click.prevent="showProfileUserModal = true; isMobileMenuOpen = false"
-                            class="block w-full text-left text-md font-medium text-t-primary transition-colors hover:text-t-secondary cursor-pointer"
+                            class="block w-full text-left text-md text-t-secondary cursor-pointer"
                         >
                             Perfil
                         </button>
@@ -210,7 +210,7 @@
                         <button
                             type="button"
                             @click.prevent="logout()"
-                            class="block w-full text-left text-md font-medium text-error transition-colors hover:text-error/75 cursor-pointer"
+                            class="block w-full text-left text-md text-error cursor-pointer"
                         >
                             Cerrar sesión
                         </button>
