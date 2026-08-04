@@ -1,5 +1,8 @@
 <script setup lang="ts">
-    const mainBanner = "/images/banners/error_banner.png"
+    import { useAuthStore } from "@/stores/useAuthStore.ts"
+
+    const authStore = useAuthStore()
+    const mainBanner = `${import.meta.env.BASE_URL}images/banners/error_banner.png`
 </script>
 
 <template>
@@ -12,7 +15,14 @@
                         <h2 class="text-gray-200 text-3xl mb-2">Página no encontrada</h2>
                         <p class="text-gray-300 text-md mb-4">Lo sentimos, la página que buscas no existe.
                             <router-link 
-                                to="/" 
+                                v-if="authStore.user?.role==='seller'"
+                                to="/seller" 
+                                class="text-white hover:font-semibold">
+                                Regresar al inicio
+                            </router-link>
+                            <router-link 
+                                v-else
+                                to="/admin" 
                                 class="text-white hover:font-semibold">
                                 Regresar al inicio
                             </router-link>

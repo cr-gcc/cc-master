@@ -19,10 +19,6 @@ const errorRoutes: RouteRecordRaw[] = [
 ]
 
 export const routes: RouteRecordRaw[] = [
-    {
-        path: '/',
-        redirect: '/login'
-    },
     ...authRoutes,
     ...adminRoutes,
     ...sellerRoutes,
