@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 import NotFound from "@/pages-error/NotFoundPage.vue";
 import authRoutes from "@/router/routes/auth.routes.ts";
 import adminRoutes from "@/router/routes/admin.routes.ts";
@@ -6,6 +6,8 @@ import sellerRoutes from "@/router/routes/seller.routes.ts";
 import { useAuthStore } from '@/stores/useAuthStore';
 
 const base = import.meta.env.VITE_BASE_URL || "/";
+const baseHash = import.meta.env.VITE_BASE_URL_HASH || "/";
+const useHash = import.meta.env.VITE_USE_HASH === 'true';
 
 const errorRoutes: RouteRecordRaw[] = [
     {
@@ -32,7 +34,7 @@ export const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(base),
+    history: useHash ? createWebHashHistory(baseHash) : createWebHistory(base),
     routes,
 })
 
