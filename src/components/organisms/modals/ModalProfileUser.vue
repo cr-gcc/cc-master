@@ -13,7 +13,7 @@
     <ModalBase
         v-model="isOpen"
         modalId="modal-profile-user"
-        modalSize="w-1/4"
+        modalSize="w-full sm:w-1/2 md:w-1/4"
         title="Mi perfil"
         titleSize="text-xl"
         textColor="text-t-primary"

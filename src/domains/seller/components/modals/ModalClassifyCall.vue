@@ -52,7 +52,7 @@
     <ModalBase
         v-model="isOpen"
         modalId="modal-save-sale"
-        modalSize="w-1/3"
+        modalSize="w-full sm:w-1/2 md:w-1/3"
         title="Tipificar llamada"
         titleSize="text-xl"
         textColor="text-t-primary"
