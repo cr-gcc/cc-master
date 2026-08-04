@@ -29,7 +29,8 @@ export const routes: RouteRecordRaw[] = [
     },
     {
         path: '/',
-        redirect: '/login'
+        name: 'root',
+        redirect: { name: 'login' }
     }
 ]
 
@@ -59,7 +60,7 @@ router.beforeEach((to, _from, next) => {
         if (userRole === 'seller') {
             return next({ name: 'seller-home' })
         }
-        return next({ name: 'admin' })
+        return next({ name: 'admin-sales-dashboard' })
     }
 
     next()
