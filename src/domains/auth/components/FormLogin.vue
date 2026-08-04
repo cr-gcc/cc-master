@@ -58,7 +58,7 @@
 <template>
     <div class="flex-1">
         <div id="login-logo" class="flex items-center justify-center mx-auto">
-            <img :src="logoUrl" class="w-auto h-6 sm:h-20" alt="logo">
+            <img :src="logoUrl" class="w-auto h-14 sm:h-20" alt="logo">
         </div>
         <div id="login-form">
             <div id="login-inputs">
