@@ -87,9 +87,11 @@
                             <li>
                                 <DropdownBase>
                                     <template #trigger>
-                                        <a href="#" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                                        <button 
+                                            type="button"
+                                            class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary cursor-pointer">
                                             <i class="fas fa-user-circle text-2xl"></i>
-                                        </a>
+                                        </button>
                                     </template>
                                     <template #menu>
                                         <div>
