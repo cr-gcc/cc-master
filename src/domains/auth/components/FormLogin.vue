@@ -2,7 +2,7 @@
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
     import { useAuthStore } from '@/stores/useAuthStore';
-    import InputLable from '@/components/atoms/inputs/InputLable.vue';
+    import InputLabel from '@/components/atoms/inputs/InputLabel.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import ProgressBar from '@/components/atoms/loaders/ProgresBar.vue';
     import AlertBasic from '@/components/atoms/alerts/AlertBasic.vue';
@@ -61,10 +61,10 @@
         <div id="login-form">
             <div id="login-inputs">
                 <div class="mb-2">
-                    <InputLable v-model="username" name="user" type="text" label="Usuario" labelText="text-md" inputText="text-md" textColor="text-gray-100"/>
+                    <InputLabel v-model="username" name="user" type="text" label="Usuario" labelText="text-md" inputText="text-md" textColor="text-gray-100"/>
                 </div>
                 <div class="mb-2">
-                    <InputLable v-model="password" name="password" type="password" label="Contraseña" labelText="text-md" inputText="text-md" textColor="text-gray-100"/>
+                    <InputLabel v-model="password" name="password" type="password" label="Contraseña" labelText="text-md" inputText="text-md" textColor="text-gray-100"/>
                 </div>
             </div>
             <div id="login-options">

@@ -1,5 +1,6 @@
 <script setup lang="ts">
     withDefaults(defineProps<{
+        margin?: string
         bgColor?: string
         textColor?: string
         size?: string
@@ -8,6 +9,7 @@
         icon?: string
         text?: string
     }>(), {
+        margin: 'mb-1',
         bgColor: '#fff',
         textColor: 'text-t-secondary',
         size: 'w-full',
@@ -18,7 +20,7 @@
     })
 </script>
 <template>
-    <button :class="`${bgColor} ${textColor} ${size} ${padding} ${textSize} mb-1 gap-1 border border-border rounded-md hover:bg-secondary hover:text-white  flex items-center justify-center cursor-pointer`">
+    <button :class="`${margin} ${bgColor} ${textColor} ${size} ${padding} ${textSize} gap-1 border border-border rounded-md hover:bg-secondary hover:text-white  flex items-center justify-center cursor-pointer`">
         <i v-if="icon" :class="icon"></i> 
         <span v-if="text">{{ text }}</span>
     </button>
