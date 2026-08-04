@@ -13,6 +13,7 @@
     const splashScreen = useSplashStore();
     const showProfileUserModal = ref(false);
     const authStore = useAuthStore();
+    const isMobileMenuOpen = ref(false);
 
     const logoWhite = `${import.meta.env.BASE_URL}images/logos/cc_w.png`;
     const logoBlack = `${import.meta.env.BASE_URL}images/logos/cc_b.png`;
@@ -121,29 +122,100 @@
                     <div class="flex items-center gap-4">
                         <div class="block md:hidden">
                             <button
-                            class="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+                            @click="isMobileMenuOpen = !isMobileMenuOpen"
+                            class="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75 cursor-pointer"
                             >
-                            <span class="sr-only">Toggle menu</span>
-
-                            <svg
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="size-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            </svg>
+                                <span class="sr-only">Toggle menu</span>
+                                <svg
+                                    v-if="!isMobileMenuOpen"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="size-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                </svg>
+                                <svg 
+                                    v-else 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="size-5" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor" 
+                                    stroke-width="2"
+                                >
+                                    <path 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    d="M6 18L18 6M6 6l12 12" 
+                                    />
+                                </svg>
                             </button>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div v-if="isMobileMenuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
+                <ul class="flex flex-col gap-4 text-md">
+                    <li v-if="authStore.user?.role === 'seller'">
+                        <router-link :to="{name: 'seller-home'}" @click="isMobileMenuOpen = false" class="block transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                            Inicio
+                        </router-link>
+                    </li>
+                    <li v-if="authStore.user?.role === 'seller'">
+                        <router-link :to="{name: 'seller-statistics'}" @click="isMobileMenuOpen = false" class="block transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                            Estadísticas
+                        </router-link>
+                    </li>
+                    <li v-if="authStore.user?.role === 'seller'">
+                        <router-link :to="{name: 'seller-call'}" @click="isMobileMenuOpen = false" class="block transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                            Llamada
+                        </router-link>
+                    </li>
+                    <li v-if="['admin', 'super-admin', 'coordinator','supervisor'].includes(authStore.user?.role as string)">
+                        <router-link :to="{name: 'admin-sales-dashboard'}" @click="isMobileMenuOpen = false" class="block transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                            Dashboard
+                        </router-link>
+                    </li>
+                    <li v-if="['admin', 'super-admin', 'coordinator'].includes(authStore.user?.role as string)">
+                        <router-link :to="{name: 'admin-sales'}" @click="isMobileMenuOpen = false" class="block transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                            Ventas
+                        </router-link>
+                    </li>
+                    <li class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                        <button @click="toggleTheme" class="flex items-center gap-2 transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary cursor-pointer">
+                            <span>{{ themeStore.theme.slug === 'light' ? 'Tema obscuro' : 'Tema claro' }}</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            @click.prevent="showProfileUserModal = true; isMobileMenuOpen = false"
+                            class="block w-full text-left text-md font-medium text-t-primary transition-colors hover:text-t-secondary cursor-pointer"
+                        >
+                            Perfil
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            @click.prevent="logout()"
+                            class="block w-full text-left text-md font-medium text-error transition-colors hover:text-error/75 cursor-pointer"
+                        >
+                            Cerrar sesión
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>

@@ -26,6 +26,10 @@ export const routes: RouteRecordRaw[] = [
     {
         path: '/:pathMatch(.*)*',
         redirect: '/404'
+    },
+    {
+        path: '/',
+        redirect: '/login'
     }
 ]
 
