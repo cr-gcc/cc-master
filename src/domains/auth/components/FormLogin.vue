@@ -38,7 +38,11 @@
                 alertType.value = 'success';
                 progressBar.value = false;
                 setTimeout(() => {
-                    router.push('/seller');
+                    if (authStore.user?.role === 'seller') {
+                        router.push('/seller');
+                    } else {
+                        router.push('/admin');
+                    }
                 }, 1000);
             } else {
                 alertMessage.value = 'Usuario o contraseña incorrectos';
