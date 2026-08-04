@@ -14,6 +14,9 @@
     const showProfileUserModal = ref(false);
     const authStore = useAuthStore();
 
+    const logoWhite = `${import.meta.env.BASE_URL}images/logos/cc_w.png`;
+    const logoBlack = `${import.meta.env.BASE_URL}images/logos/cc_b.png`;
+
     const logout = () => {
         splashScreen.show();
         
@@ -41,8 +44,8 @@
                 <div class="flex-1 md:flex md:items-center md:gap-12">
                     <a class="block" href="#">
                         <span class="sr-only">Home</span>
-                        <img v-if="themeStore.theme.slug === 'dark'" src="/images/logos/cc_w.png" alt="CC Master" class="h-12 w-auto">
-                        <img v-else src="/images/logos/cc_b.png" alt="CC Master" class="h-12 w-auto">
+                        <img v-if="themeStore.theme.slug === 'dark'" :src="logoWhite" alt="CC Master" class="h-12 w-auto">
+                        <img v-else :src="logoBlack" alt="CC Master" class="h-12 w-auto">
                     </a>
                 </div>
                 <div class="md:flex md:items-center md:gap-12">

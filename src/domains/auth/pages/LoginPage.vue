@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import FormLogin from "@/domains/auth/components/FormLogin.vue";
 
-    const mainBanner = "/images/banners/login_banner.png"
+    const mainBanner = `${import.meta.env.BASE_URL}images/banners/login_banner.png`
 </script>
 
 <template>

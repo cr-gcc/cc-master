@@ -7,6 +7,8 @@
     import ProgressBar from '@/components/atoms/loaders/ProgresBar.vue';
     import AlertBasic from '@/components/atoms/alerts/AlertBasic.vue';
 
+    const logoUrl = `${import.meta.env.BASE_URL}images/logos/cc_w.png`;
+
     const router = useRouter();
     const authStore = useAuthStore();
 
@@ -56,7 +58,7 @@
 <template>
     <div class="flex-1">
         <div id="login-logo" class="flex items-center justify-center mx-auto">
-            <img src="/images/logos/cc_w.png" class="w-auto h-6 sm:h-20" alt="logo">
+            <img :src="logoUrl" class="w-auto h-6 sm:h-20" alt="logo">
         </div>
         <div id="login-form">
             <div id="login-inputs">
