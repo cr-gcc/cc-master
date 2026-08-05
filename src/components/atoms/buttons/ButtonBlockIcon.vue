@@ -8,6 +8,7 @@
         textSize?: string
         icon?: string
         text?: string
+        title?: string
     }>(), {
         margin: 'mb-1',
         bgColor: '#fff',
@@ -16,11 +17,12 @@
         padding: 'px-3 py-1',
         textSize: 'text-md',
         icon: '',
-        text: ''
+        text: '',
+        title: ''
     })
 </script>
 <template>
-    <button :class="`${margin} ${bgColor} ${textColor} ${size} ${padding} ${textSize} gap-1 border border-border rounded-md hover:bg-secondary hover:text-white  flex items-center justify-center cursor-pointer`">
+    <button :title="title" :class="`${margin} ${bgColor} ${textColor} ${size} ${padding} ${textSize} gap-1 border border-border rounded-md hover:bg-secondary hover:text-white flex items-center justify-center cursor-pointer`">
         <i v-if="icon" :class="icon"></i> 
         <span v-if="text">{{ text }}</span>
     </button>

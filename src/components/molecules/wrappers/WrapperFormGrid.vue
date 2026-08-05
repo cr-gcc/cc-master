@@ -12,12 +12,11 @@
         alertMessage: '',
         alertType: '',
     });
-
 </script>
 
 <template>
     <div :class="[gridCols, 'gap-2 items-center mb-2']">
-        <slot name="inputs-buton" />
+        <slot name="inputs-button" />
         <slot />
         <div v-if="loading" class="col-span-full">
             <ProgresBar />

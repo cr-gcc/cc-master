@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import GroupInputsButton from '@/domains/admin/components/GroupInputsButton.vue';
+    import WrapperFormGrid from '@/components/molecules/wrappers/WrapperFormGrid.vue';
     import InputLabel from '@/components/atoms/inputs/InputLabel.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import TableBasic from '@/components/molecules/tables/TableBasic.vue';
@@ -89,13 +89,13 @@
     <div id="sales-dashboard" class="container mx-auto mb-10">
         <h1 class="text-t-primary text-5xl mb-4">Dashboard de ventas</h1>
         <div class="rounded-xl border border-border p-2">
-            <GroupInputsButton 
+            <WrapperFormGrid 
                 gridCols="grid grid-cols-1 md:grid-cols-4" 
                 :loading="loading"
                 :alertMessage="alertMessage"
                 :alertType="alertType"
             >
-                <template #inputs-buton>
+                <template #inputs-button>
                     <div></div>
                     <div class="bg-surface rounded-md">
                         <InputLabel 
@@ -113,7 +113,7 @@
                     </div>
                     <ButtonBlockIcon @click="searchGlobalSales()" margin="mb-0" bgColor="bg-surface" icon="fa-solid fa-search" textSize="text-sm" text="Buscar" />    
                 </template>
-            </GroupInputsButton>
+            </WrapperFormGrid>
             <TableBasic 
                 :headers="headers" 
                 :data="data" 

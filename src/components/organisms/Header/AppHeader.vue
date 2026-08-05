@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue';    
     import { useRouter } from 'vue-router';
-    import DropdownBase from '@components/molecules/DropdownBasic.vue';
+    import DropdownBase from '@components/molecules/wrappers/DropdownBasic.vue';
     import ModalProfileUser from '@components/organisms/modals/ModalProfileUser.vue';
     import { useThemeStore } from '@/stores/themeStore';
     import { lightTheme, darkTheme } from '@/themes/defaults';
