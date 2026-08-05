@@ -34,7 +34,9 @@ const customFormatDate = (
             'nov',
             'dic'
         ];
-        const date = new Date(currentDate);
+        // Evitar desfase de zona horaria (UTC a Local) en fechas 'YYYY-MM-DD'
+        const safeDate = currentDate.length === 10 ? `${currentDate}T12:00:00` : currentDate;
+        const date = new Date(safeDate);
         const day = String(date.getDate()).padStart(2, '0');
         const month = spanishMonths[date.getMonth()];
         const monthShort = spanishShortMonths[date.getMonth()];

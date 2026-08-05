@@ -29,8 +29,8 @@
             campaign: 'Anti fraude',
             sale_date: '2026-01-01',
             validation_date: '2026-01-03',
-            agent: 'Juan Perez',
-            client: 'Pedro Lopez',
+            agent: 'Juan Perez Santana',
+            client: 'Pedro Lopez Hernandez',
             status: 'Aprobado',
             locked: true
         },
@@ -39,8 +39,8 @@
             campaign: 'Anti fraude',
             sale_date: '2026-02-01',
             validation_date: '',
-            agent: 'Roberto Perez',
-            client: 'Maria Hernandez',
+            agent: 'Roberto Perez Ruiz',
+            client: 'Maria Hernandez Lopez',
             status: 'Pendiente',
             locked: true
         },
@@ -49,8 +49,8 @@
             campaign: 'Seguro de vida',
             sale_date: '2026-03-01',
             validation_date: '2026-03-02',
-            agent: 'Mariana Flores',
-            client: 'Miguel Torres',
+            agent: 'Mariana Flores Sanchez',
+            client: 'Miguel Torres Hernandez',
             status: 'Aprobado',
             locked: true
         },  
@@ -59,8 +59,8 @@
             campaign: 'Seguro de mascota',
             sale_date: '2026-04-01',
             validation_date: '',
-            agent: 'Carlos Santana',
-            client: 'Ana Garcia',
+            agent: 'Carlos Santana Ruiz',
+            client: 'Ana Garcia Hernandez',
             status: 'Rechazado',
             locked: false
         }
@@ -195,7 +195,7 @@
                                 padding="px-2 py-0.5"
                                 margin="mb-0" 
                                 icon="fa-solid fa-file-lines" 
-                                textSize="text-ms"
+                                textSize="text-sm"
                                 size="w-auto"
                                 title="Ver"
                             />
@@ -204,7 +204,7 @@
                                 padding="px-2 py-0.5"
                                 margin="mb-0" 
                                 icon="fa fa-trash-alt" 
-                                textSize="text-ms"
+                                textSize="text-sm"
                                 size="w-auto"
                                 title="Eliminar"
                             />

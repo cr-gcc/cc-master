@@ -3,8 +3,7 @@
     import { customFormatDate } from '@/utils/dateFormat.ts'
     import CardInfComponent from '@/domains/seller/components/cards/CardInfComponent.vue';
     import CardTimeComponent from '@/domains/seller/components/cards/CardTimeComponent.vue';
-
-    const currentDate = ref(new Date());
+    const currentDate = ref(new Date().toISOString().split('T')[0]);
 </script>
 
 <template>
