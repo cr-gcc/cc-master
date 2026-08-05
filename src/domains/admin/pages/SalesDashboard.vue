@@ -89,37 +89,39 @@
     <div id="sales-dashboard" class="container mx-auto mb-10">
         <h1 class="text-t-primary text-5xl mb-4">Dashboard de ventas</h1>
         <div class="rounded-xl border border-border p-2">
-            <WrapperFormGrid 
-                gridCols="grid grid-cols-1 md:grid-cols-4" 
-                :loading="loading"
-                :alertMessage="alertMessage"
-                :alertType="alertType"
-            >
-                <template #inputs-button>
-                    <div></div>
-                    <div class="bg-surface rounded-md">
-                        <InputLabel 
-                            v-model="dataInit"
-                            name="start_date"
-                            type="date"
-                        />
-                    </div>
-                    <div class="bg-surface rounded-md">
-                        <InputLabel 
-                            v-model="dataEnd"
-                            name="end_date"
-                            type="date"
-                        />
-                    </div>
-                    <ButtonBlockIcon @click="searchGlobalSales()" margin="mb-0" bgColor="bg-surface" icon="fa-solid fa-search" textSize="text-sm" text="Buscar" />    
-                </template>
-            </WrapperFormGrid>
-            <TableBasic 
-                :headers="headers" 
-                :data="data" 
-                textSize="text-md" 
-                :lastRowBold="lastRowBold" 
-            />
+            <div class="mt-1">
+                <WrapperFormGrid 
+                    gridCols="grid grid-cols-1 md:grid-cols-4" 
+                    :loading="loading"
+                    :alertMessage="alertMessage"
+                    :alertType="alertType"
+                >
+                    <template #inputs-button>
+                        <div></div>
+                        <div class="bg-surface rounded-md">
+                            <InputLabel 
+                                v-model="dataInit"
+                                name="start_date"
+                                type="date"
+                            />
+                        </div>
+                        <div class="bg-surface rounded-md">
+                            <InputLabel 
+                                v-model="dataEnd"
+                                name="end_date"
+                                type="date"
+                            />
+                        </div>
+                        <ButtonBlockIcon @click="searchGlobalSales()" margin="mb-0" bgColor="bg-surface" icon="fa-solid fa-search" textSize="text-sm" text="Buscar" />    
+                    </template>
+                </WrapperFormGrid>
+                <TableBasic 
+                    :headers="headers" 
+                    :data="data" 
+                    textSize="text-md" 
+                    :lastRowBold="lastRowBold" 
+                />    
+            </div>
         </div>
     </div>
 </template>
