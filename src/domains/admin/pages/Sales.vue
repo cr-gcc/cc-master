@@ -5,10 +5,12 @@
     import InputLabel from '@/components/atoms/inputs/InputLabel.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import ModalDeleteItem from '@/components/organisms/modals/ModalDeleteItem.vue';
+    import ModalValidateSale from '@/domains/admin/components/ModalValidateSale.vue';
     import { customFormatDate } from '@/utils/dateFormat';
     import { ref } from 'vue';
 
-    const isOpen = ref<boolean>(false);
+    const isOpenValidateSale = ref<boolean>(false);
+    const isOpenDelete = ref<boolean>(false);
     const campaign = ref<string>('');
     const saleStatusFilter = ref<string>('');
     const dateFilter = ref<string>('');
@@ -121,11 +123,11 @@
             loading.value = false;
         }, 2000);
     }    
-    const getSaleRecord = (idSale: number) => {
-        alert(`Obteniendo registro de venta ${idSale}`);
+    const getSaleRecord = () => {
+        isOpenValidateSale.value = true;
     }
     const deleteSaleRecord = () => {
-        isOpen.value = true;
+        isOpenDelete.value = true;
     }
 </script>
 
@@ -205,7 +207,7 @@
                                 title="Ver"
                             />
                             <ButtonBlockIcon 
-                                @click="deleteSaleRecord(item.id)"
+                                @click="deleteSaleRecord()"
                                 bgColor="bg-surface"
                                 padding="px-2 py-0.5"
                                 margin="mb-0" 
@@ -220,5 +222,6 @@
             </div>
         </div>
     </div>
-    <ModalDeleteItem v-model="isOpen" />
+    <ModalValidateSale v-model="isOpenValidateSale" />
+    <ModalDeleteItem v-model="isOpenDelete" />
 </template>
