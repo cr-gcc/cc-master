@@ -4,9 +4,11 @@
     import SelectLabel from '@/components/atoms/selects/SelectLabel.vue';
     import InputLabel from '@/components/atoms/inputs/InputLabel.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
+    import ModalDeleteItem from '@/components/organisms/modals/ModalDeleteItem.vue';
     import { customFormatDate } from '@/utils/dateFormat';
     import { ref } from 'vue';
 
+    const isOpen = ref<boolean>(false);
     const campaign = ref<string>('');
     const saleStatusFilter = ref<string>('');
     const dateFilter = ref<string>('');
@@ -122,6 +124,9 @@
     const getSaleRecord = (idSale: number) => {
         alert(`Obteniendo registro de venta ${idSale}`);
     }
+    const deleteSaleRecord = () => {
+        isOpen.value = true;
+    }
 </script>
 
 <template>
@@ -200,6 +205,7 @@
                                 title="Ver"
                             />
                             <ButtonBlockIcon 
+                                @click="deleteSaleRecord(item.id)"
                                 bgColor="bg-surface"
                                 padding="px-2 py-0.5"
                                 margin="mb-0" 
@@ -214,4 +220,5 @@
             </div>
         </div>
     </div>
+    <ModalDeleteItem v-model="isOpen" />
 </template>

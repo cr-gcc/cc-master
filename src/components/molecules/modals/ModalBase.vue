@@ -6,6 +6,8 @@
     import AlertBasic from '@components/atoms/alerts/AlertBasic.vue';
 
     const router = useRouter();
+    const isOpen = defineModel<boolean>({ default: false });
+    const dialogRef = ref<HTMLDialogElement | null>(null);
     const props = withDefaults(defineProps<{
         modalSize?: string
         modalId: string
@@ -36,11 +38,8 @@
         urlRedirect: ''
     });
 
-    // Define model for controlling visibility
-    const isOpen = defineModel<boolean>({ default: false });
-    const dialogRef = ref<HTMLDialogElement | null>(null);
+    const emit = defineEmits(['close']);
 
-    // Watch isOpen to toggle native dialog state using showModal() / close()
     watch(isOpen, (newValue) => {
         if (!dialogRef.value) return;
         if (newValue) {
@@ -54,20 +53,19 @@
         }
     });
 
-    // Sync initial state on mount
-    onMounted(() => {
-        if (isOpen.value && dialogRef.value && !dialogRef.value.open) {
-            dialogRef.value.showModal();
-        }
-    });
-
-    // Helper to close the modal
     const close = () => {
         isOpen.value = false;
         if (props.urlRedirect) {
             router.push(props.urlRedirect);
         }
+        emit('close');
     };
+
+    onMounted(() => {
+        if (isOpen.value && dialogRef.value && !dialogRef.value.open) {
+            dialogRef.value.showModal();
+        }
+    });
 </script>
 
 <template>
@@ -93,12 +91,12 @@
                     <slot name="modal-footer"></slot>
                     <ButtonBlockIcon 
                         v-if="closeButton"
+                        @click="close"
                         bgColor="bg-surface"
                         text="Cerrar"
                         :size="buttonSize"
                         :padding="buttonPadding"
                         :textSize="buttonTextSize"
-                        @click="close"
                     />
                 </div>
                 <!-- Loading -->
