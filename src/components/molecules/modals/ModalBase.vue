@@ -22,6 +22,7 @@
         alertMessage?: string
         alertType?: string
         urlRedirect?: string
+        hasFrame?: boolean
     }>(), {
         modalSize: 'w-full',
         modalId: 'modal',
@@ -34,8 +35,9 @@
         closeButton: true,
         loadingPB: false,
         alertMessage: '',
-        alertType: 'success',
-        urlRedirect: ''
+        alertType: '',
+        urlRedirect: '',
+        hasFrame: true
     });
 
     const emit = defineEmits(['close']);

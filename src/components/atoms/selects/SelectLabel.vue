@@ -21,7 +21,7 @@
 </script>
 <template>
     <div class="relative">
-        <label :for="label" :class="`${labelText} ${textSize} text-t-primary mb-0.5`"> {{ label }} </label>
+        <label :for="label" :class="`${labelText} text-t-primary mb-0.5`"> {{ label }} </label>
         <select 
             v-model="model"
             :class="`rounded border border-border rounded-md focus:outline-none ${size} ${inputSize} ${textSize} cursor-pointer`"

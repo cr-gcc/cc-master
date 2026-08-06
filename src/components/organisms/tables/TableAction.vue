@@ -12,20 +12,24 @@
         data: Array<any>
         textSize?: string
         lastRowBold?: boolean
+        headerTextCenter?: string
+        miniFrame?: boolean
     }>(), {
         columns: () => [],
         data: () => [],
         textSize: 'text-xs',
         lastRowBold: false,
+        headerTextCenter: 'text-center',
+        miniFrame: false
     });
 </script>
 
 <template>
-    <CardFrameForm>
+    <CardFrameForm :miniFrame="miniFrame">
         <template #customized-form>
             <div class="overflow-x-auto">
                 <table :class="[textSize, 'min-w-full divide-y-2 divide-gray-200']">
-                    <thead class="text-center text-t-primary">
+                    <thead :class="[headerTextCenter, 'text-t-primary']">
                         <tr>
                             <th v-for="(col, index) in columns" :key="index" class="px-3 py-2 whitespace-nowrap">
                                 {{ col.label }}
