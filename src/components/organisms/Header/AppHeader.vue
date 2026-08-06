@@ -77,6 +77,11 @@
                                     Ventas
                                 </router-link>
                             </li>
+                            <li v-if="['admin', 'super-admin', 'coordinator'].includes(authStore.user?.role as string)">
+                                <router-link :to="{name: 'admin-reports'}" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary">
+                                    Reportes
+                                </router-link>
+                            </li>
                             <li class="border-l-2 border-t-secondary h-8"></li>
                             <li>
                                 <button @click="toggleTheme" class="transition text-t-secondary hover:text-t-primary dark:text-t-primary dark:hover:text-t-secondary cursor-pointer" :title="themeStore.theme.slug === 'light' ? 'Tema oscuro' : 'Tema claro'">
@@ -163,7 +168,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Mobile Menu -->
             <div v-if="isMobileMenuOpen" class="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
                 <ul class="flex flex-col gap-4 text-md">
