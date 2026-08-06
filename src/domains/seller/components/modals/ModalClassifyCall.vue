@@ -46,11 +46,22 @@
             urlRedirect.value = '/seller';
         }, 2000);
     }
+
+    const resetState = () => {
+        classification.value = '';
+        reason.value = '';
+        alertMessage.value = '';
+        alertType.value = '';
+        closeButton.value = false;
+        urlRedirect.value = '';
+        loading.value = false;
+    };
 </script>
 
 <template>
     <ModalBase
         v-model="isOpen"
+        @close="resetState"
         modalId="modal-save-sale"
         modalSize="w-full sm:w-1/2 md:w-1/3"
         title="Tipificar llamada"
