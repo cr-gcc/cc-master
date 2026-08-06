@@ -5,7 +5,7 @@
     import InputLabel from '@/components/atoms/inputs/InputLabel.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import ModalDeleteItem from '@/components/organisms/modals/ModalDeleteItem.vue';
-    import ModalValidateSale from '@/domains/admin/components/ModalValidateSale.vue';
+    import ModalValidateSale from '@/domains/admin/components/modals/ModalValidateSale.vue';
     import { customFormatDate } from '@/utils/dateFormat';
     import { ref } from 'vue';
 
@@ -134,8 +134,8 @@
 <template>
     <div id="sales" class="container mx-auto mb-10">
         <h1 class="text-t-primary text-5xl mb-4">Ventas</h1>
-        <div class="rounded-xl border border-border px-2 py-1">
-            <div class="mt-2">
+        <div class="rounded-xl border border-border p-2">
+            <div class="mt-1">
                 <WrapperFormGrid 
                     gridCols="grid grid-cols-1 md:grid-cols-4" 
                     :loading="loading"
@@ -194,10 +194,10 @@
                             ></i>
                         </div>
                     </template>
-                    <template #cell-options="{ item }">
+                    <template #cell-options>
                         <div class="w-full flex justify-center gap-2">
                             <ButtonBlockIcon 
-                                @click="getSaleRecord(item.id)"
+                                @click="getSaleRecord()"
                                 bgColor="bg-surface"
                                 padding="px-2 py-0.5"
                                 margin="mb-0" 
