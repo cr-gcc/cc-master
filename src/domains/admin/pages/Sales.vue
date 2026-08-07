@@ -11,12 +11,14 @@
 
     const isOpenValidateSale = ref<boolean>(false);
     const isOpenDelete = ref<boolean>(false);
+    const reloadPeage = ref<boolean>(true);
+    const loading = ref<boolean>(false);
     const campaign = ref<string>('');
     const saleStatusFilter = ref<string>('');
     const dateFilter = ref<string>('');
     const alertMessage = ref<string>('');
     const alertType = ref<string>('');
-    const loading = ref<boolean>(false);
+    
     const columns = ref<Array<any>>([
         { label: 'Campaña', key: 'campaign' },
         { label: 'Venta', key: 'sale_date', custom:true },
@@ -223,5 +225,9 @@
         </div>
     </div>
     <ModalValidateSale v-model="isOpenValidateSale" />
-    <ModalDeleteItem v-model="isOpenDelete" />
+    <ModalDeleteItem 
+        v-model="isOpenDelete" 
+        modalId="modal-delete-sale" 
+        :reloadPage="reloadPeage"
+    />
 </template>
