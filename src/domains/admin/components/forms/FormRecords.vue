@@ -2,7 +2,8 @@
     import TableAction from '@/components/organisms/tables/TableAction.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
     import { ref } from 'vue';
-
+    
+    const miniFrame = ref<boolean>(true);
     const columns = ref<Array<any>>([
         { label: 'Nombre', key: 'filename' },
         { label: 'Duración', key: 'time' },
@@ -36,7 +37,6 @@
             time: '00:12:42'   
         }
     ]);
-    const miniFrame = ref<boolean>(true);
 </script>
 
 <template>

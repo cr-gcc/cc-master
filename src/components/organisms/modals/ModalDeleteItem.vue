@@ -21,7 +21,6 @@
             alertType.value = 'success';
         }, 1000);
     }
-
     const resetComponentState = () => {
         deleteOption.value = true;
         loading.value = false;
