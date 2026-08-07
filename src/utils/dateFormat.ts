@@ -1,6 +1,7 @@
 const customFormatDate = (
     currentDate: string | null | undefined | '',
-    format: null | string = null
+    format: null | string = null,
+    fullDate: boolean = false
 ) => {
     if (!currentDate || currentDate === '' || currentDate == undefined || currentDate == null) {
         return ' - ';
@@ -34,24 +35,37 @@ const customFormatDate = (
             'nov',
             'dic'
         ];
-        // Evitar desfase de zona horaria (UTC a Local) en fechas 'YYYY-MM-DD'
         const safeDate = currentDate.length === 10 ? `${currentDate}T12:00:00` : currentDate;
         const date = new Date(safeDate);
         const day = String(date.getDate()).padStart(2, '0');
         const month = spanishMonths[date.getMonth()];
         const monthShort = spanishShortMonths[date.getMonth()];
         const year = date.getFullYear();
-        let finalFormat: null | string = null;
+        let dateFormat: string = '';
+        let timeFormat: string = '';
+        let finalFormat: string | null = null;
 
         if (format == 'of') {
-            finalFormat = `${day} de ${month} de ${year}`;
+            dateFormat = `${day} de ${month} de ${year}`;
         }
         else if (format == 'diag') {
-            finalFormat = `${day}/${monthShort}/${year}`;
+            dateFormat = `${day}/${monthShort}/${year}`;
         }
         else {
-            finalFormat = `${day}-${monthShort}-${year}`;
+            dateFormat = `${day}-${monthShort}-${year}`;
         }
+
+        if (fullDate) {
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            timeFormat = `${hours}:${minutes}:${seconds}`;
+            finalFormat = `${dateFormat} ${timeFormat}`;
+        }
+        else {
+            finalFormat = dateFormat;
+        }
+
         return finalFormat;
     }
 }
