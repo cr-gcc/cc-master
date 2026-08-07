@@ -1,20 +1,25 @@
 <script setup lang="ts">
     import ModalBase from '@/components/molecules/modals/ModalBase.vue';
-    import { ref } from 'vue';
 
     const isOpen = defineModel<boolean>({ default: false });
-    const modalId = ref<string>('');    
-    const title = ref<string>('');
-    const message = ref<string>('');
     const buttonSize = 'w-auto';
     const buttonPadding = 'px-2 py-0.5';
-    const buttonTextSize = 'text-sm';
+    const buttonTextSize = 'text-sm';    
+    const props = withDefaults(defineProps<{
+        modalId?: string;
+        title?: string;
+        message?: string;
+        textSize?: string;
+        modalSize?: string;
+    }>(), {
+        modalId: 'modal-message',
+        title: '',
+        message: '',
+        textSize: 'text-sm',
+        modalSize: 'w-full sm:w-1/3 md:w-1/4'
+    });
 
     const emit = defineEmits(['close']);
-
-    const close = () => {
-        emit('close');
-    };
 </script>
 
 <template>
@@ -22,26 +27,17 @@
         v-model="isOpen"
         :modalId="modalId"
         :title="title"
-        :modalSize="'w-md'"
+        :modalSize="modalSize"
         :closeButton="true"
         :buttonSize="buttonSize"
         :buttonPadding="buttonPadding"
         :buttonTextSize="buttonTextSize"
+        @close="emit('close')"
     >
         <template #modal-content>
-            <div class="text-center">
-                <p>{{ message }}</p>
+            <div class="text-justify">
+                <p :class="[textSize, 'leading-tight']">{{ message }}</p>
             </div>
-        </template>
-        <template #modal-footer>
-            <ButtonBlockIcon 
-                @click="close"
-                bgColor="bg-surface"
-                text="Cerrar"
-                :size="'w-auto'"
-                :padding="'px-2 py-1'"
-                :textSize="'text-sm'"
-            />
         </template>
     </ModalBase>
 </template>

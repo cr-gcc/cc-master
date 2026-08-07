@@ -93,12 +93,12 @@
                     <slot name="modal-footer"></slot>
                     <ButtonBlockIcon 
                         v-if="closeButton"
-                        @click="close"
                         bgColor="bg-surface"
                         text="Cerrar"
                         :size="buttonSize"
                         :padding="buttonPadding"
                         :textSize="buttonTextSize"
+                        @click="close"
                     />
                 </div>
                 <!-- Loading -->

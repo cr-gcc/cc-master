@@ -11,6 +11,13 @@
     const buttonSize = 'w-auto';
     const buttonPadding = 'px-2 py-0.5';
     const buttonTextSize = 'text-sm';
+    const props = withDefaults(defineProps<{
+        modalId?: string;
+        reloadPage?: boolean;
+    }>(), {
+        modalId: 'modal-delete-item',
+        reloadPage: false
+    });
 
     const deleteItem = () => {
         loading.value = true;
@@ -22,17 +29,22 @@
         }, 1000);
     }
     const resetComponentState = () => {
-        deleteOption.value = true;
-        loading.value = false;
-        alertMessage.value = '';
-        alertType.value = '';
+        if (props.reloadPage == true && alertType.value == 'success') {
+            window.location.reload();
+        }
+        else {
+            deleteOption.value = true;
+            loading.value = false;
+            alertMessage.value = '';
+            alertType.value = '';  
+        }
     }
 </script>
 
 <template>
     <ModalBase
         v-model="isOpen"
-        modalId="modal-delete-item"
+        :modalId="modalId"
         modalSize="w-full sm:w-1/2 md:w-1/4"
         title="Eliminar registro"
         titleSize="text-xl"
