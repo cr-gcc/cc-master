@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
-  import { useThemeStore } from '@/stores/themeStore'
+  import { useThemeStore } from '@/stores/useThemeStore'
 
   import MainLayout from '@layouts/MainLayout.vue'
   import BlankLayout from '@layouts/BlankLayout.vue'

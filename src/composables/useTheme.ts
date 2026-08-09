@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { useThemeStore } from '@/stores/themeStore'
+import { useThemeStore } from '@/stores/useThemeStore'
 
 export function useTheme() {
   const store = useThemeStore()
