@@ -2,6 +2,7 @@
     import AppHeader from '@/components/organisms/header/AppHeader.vue';
     import AppFooter from '@/components/organisms/footer/AppFooter.vue';
     import SplashScreen from '@/components/atoms/loaders/SplashScreen.vue';
+    import ToastBasic from '@/components/atoms/alerts/ToastBasic.vue';
 </script>
 
 <template>
@@ -15,4 +16,5 @@
         <AppFooter />
     </div>
     <SplashScreen />
+    <ToastBasic />
 </template>
