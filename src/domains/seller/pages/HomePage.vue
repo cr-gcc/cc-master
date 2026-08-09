@@ -1,28 +1,37 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
     import CardFrame from '@/components/atoms/cards/CardFrame.vue';
     import ButtonBlockIcon from '@/components/atoms/buttons/ButtonBlockIcon.vue';
-    import { useAuthStore } from '@/stores/useAuthStore.ts';
-    import { useSplashStore } from '@/stores/useSplashScreenStore.ts';
+    import ModalPhoneSessionLogin from '@/domains/seller/components/modals/ModalPhoneSessionLogin.vue';
+    import { useAuthStore } from '@/stores/useAuthStore';
+    import { usePhoneSessionStore } from '@/stores/usePhoneSessionStore';
+    import { useSplashStore } from '@/stores/useSplashScreenStore';
+    import { ref, onMounted } from 'vue';
 
     const authStore = useAuthStore();
+    const phoneSessionStore = usePhoneSessionStore();
     const splashScreenStore = useSplashStore();
 
+    const isOpenPhoneSessionLoginModal = defineModel<boolean>()
     const status = ref("offline");
     const text1 = "1. Estadísticas";
     const body1 = "Esta página mostrará toda la información relevante de tus estadísticas generales diarias de la jornada laboral."
     const text2 = "2. Llamada";
     const body2 = "El contenido de esta sección se habilitará cuando se te asigne una llamada. Aquí encontrarás todas las opciones necesarias para manejar la llamada y los datos correspondientes para concretar la venta."
-    const text3 = "Pausas";
-    const body3 = "En esta sección podrás iniciar y finalizar tus pausas durante la jornada laboral, ya sea tu hora de comida, ida al sanitario o alguna dinámica grupal, tendrás que registrar todas tus pausas. ";
+    const text3 = "Conexión/Desconexión";
+    const body3 = "En esta sección podrás conectarte y desconectarte de la plataforma. Asegurate de conectarte para iniciar tu jornada laboral y poder recibir llamadas y/o mensajes.";
 
     const online = (isOnline: boolean) => {
         splashScreenStore.show();
         setTimeout(() => {
+            phoneSessionStore.setOnline(isOnline);
             status.value = isOnline ? "online" : "offline";
             splashScreenStore.hide();
         }, 2000)
     }
+
+    onMounted(async () => {
+        await phoneSessionStore.checkSession();
+    })
 </script>
 
 <template>
@@ -59,48 +68,59 @@
                         :body=body3 
                     >
                         <template #options>
-                            <div class="mb-2">
+                            <div v-if="!phoneSessionStore.isPhoneSessionInitialized" class="mb-2">
                                 <ButtonBlockIcon 
-                                    v-if="status === 'offline'" 
-                                    @click="online(true)"
+                                    @click="isOpenPhoneSessionLoginModal = true"
                                     bgColor="bg-surface" 
-                                    icon="fa-solid fa-desktop" 
-                                    text="Conectarme"
+                                    icon="fa-solid fa-phone-volume" 
+                                    text="Sesión de telefonía"
                                     padding="px-2 py-1"
                                     textSize="text-sm"
                                 />
                             </div>
-                            <div v-if="status === 'online'">
-                                <div class="mb-2">
+                            <div v-else>
+                                <div v-if="!phoneSessionStore.isOnline" class="mb-2">
                                     <ButtonBlockIcon 
-                                        @click="online(false)"
+                                        @click="online(true)"
                                         bgColor="bg-surface" 
-                                        icon="fa-solid fa-utensils" 
-                                        text="Comida"
+                                        icon="fa-solid fa-desktop" 
+                                        text="Conectarme"
                                         padding="px-2 py-1"
                                         textSize="text-sm"
                                     />
                                 </div>
-                                <div class="mb-2">
-                                    <ButtonBlockIcon 
-                                        @click="online(false)"
-                                        bgColor="bg-surface" 
-                                        icon="fa-solid fa-phone-slash" 
-                                        text="Descanso/Dinámica"
-                                        padding="px-2 py-1"
-                                        textSize="text-sm"
-                                    />
+                                <div v-else>
+                                    <div class="mb-2">
+                                        <ButtonBlockIcon 
+                                            @click="online(false)"
+                                            bgColor="bg-surface" 
+                                            icon="fa-solid fa-utensils" 
+                                            text="Comida"
+                                            padding="px-2 py-1"
+                                            textSize="text-sm"
+                                        />
+                                    </div>
+                                    <div class="mb-2">
+                                        <ButtonBlockIcon 
+                                            @click="online(false)"
+                                            bgColor="bg-surface" 
+                                            icon="fa-solid fa-phone-slash" 
+                                            text="Descanso/Dinámica"
+                                            padding="px-2 py-1"
+                                            textSize="text-sm"
+                                        />
+                                    </div>
+                                    <div class="mb-2">
+                                        <ButtonBlockIcon 
+                                            @click="online(false)"
+                                            bgColor="bg-surface" 
+                                            icon="fa-solid fa-restroom" 
+                                            text="Sanitario"
+                                            padding="px-2 py-1"
+                                            textSize="text-sm"
+                                        />
+                                    </div>   
                                 </div>
-                                <div class="mb-2">
-                                    <ButtonBlockIcon 
-                                        @click="online(false)"
-                                        bgColor="bg-surface" 
-                                        icon="fa-solid fa-restroom" 
-                                        text="Sanitario"
-                                        padding="px-2 py-1"
-                                        textSize="text-sm"
-                                    />
-                                </div>    
                             </div>
                         </template>
                     </CardFrame>
@@ -108,4 +128,5 @@
             </div>
         </div>
     </div>
+    <ModalPhoneSessionLogin v-model="isOpenPhoneSessionLoginModal" />
 </template>
