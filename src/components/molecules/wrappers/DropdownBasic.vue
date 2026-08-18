@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import { ref } from 'vue'
-    import { useClickOutside } from '@/composables/useClickOutside'
+    import { onClickOutside } from '@vueuse/core'
 
     const isOpen = ref(false)
     const dropdownRef = ref<HTMLElement | null>(null)
 
-    useClickOutside(dropdownRef, () => {
+    onClickOutside(dropdownRef, () => {
         isOpen.value = false
     })
 

@@ -1,32 +1,48 @@
 import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 import type { AppTheme } from '@/themes'
 import { applyTheme } from '@/themes'
-import { lightTheme } from '@/themes/defaults'
+import { lightTheme, darkTheme } from '@/themes/defaults'
+import { useDark, useToggle } from '@vueuse/core'
 
-export const useThemeStore = defineStore('theme', {
-    state: () => ({
-        theme: lightTheme as AppTheme,
-        isLoading: false,
-        error: null as string | null
-    }),
-    actions: {
-        async initTheme() {
-            if (!this.theme || !this.theme.id || (this.theme.id !== 'light' && this.theme.id !== 'dark')) {
-                this.setTheme(lightTheme)
-            } else {
-                applyTheme(this.theme.colors, this.theme.slug)
-            }
-        },
-        setTheme(newTheme: AppTheme) {
-            try {
-                this.theme = newTheme
-                applyTheme(newTheme.colors, newTheme.slug)
-            } catch (err) {
-                console.error('[themeStore] Error setting theme:', err)
-            }
+export const useThemeStore = defineStore('theme', () => {
+    const isDark = useDark({
+        onChanged: (dark: boolean) => {
+            const currentTheme = dark ? darkTheme : lightTheme
+            applyTheme(currentTheme.colors, currentTheme.slug)
         }
-    },
-    persist: {
-        pick: ['theme']
+    })
+    
+    const isLoading = ref(false)
+    const error = ref<string | null>(null)
+
+    const theme = computed<AppTheme>(() => isDark.value ? darkTheme : lightTheme)
+
+    async function initTheme() {
+        const currentTheme = isDark.value ? darkTheme : lightTheme
+        applyTheme(currentTheme.colors, currentTheme.slug)
+    }
+
+    function setTheme(newTheme: AppTheme) {
+        try {
+            isDark.value = newTheme.slug === 'dark'
+        } catch (err) {
+            console.error('[themeStore] Error setting theme:', err)
+        }
+    }
+
+    function toggleTheme() {
+        const toggle = useToggle(isDark)
+        toggle()
+    }
+
+    return {
+        isDark,
+        isLoading,
+        error,
+        theme,
+        initTheme,
+        setTheme,
+        toggleTheme
     }
 })

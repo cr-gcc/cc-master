@@ -6,7 +6,6 @@
     import { ref } from 'vue';  
     import { useRouter } from 'vue-router';
     import { useThemeStore } from '@/stores/useThemeStore';
-    import { lightTheme, darkTheme } from '@/themes/defaults';
     import { useAuthStore } from '@/stores/useAuthStore';
     import { usePhoneSessionStore } from '@/stores/usePhoneSessionStore';
     import { useSplashStore } from '@/stores/useSplashScreenStore';
@@ -33,11 +32,7 @@
         }, 2000);
     }
     const toggleTheme = () => {
-        if (themeStore.theme.slug === 'dark') {
-            themeStore.setTheme(lightTheme);
-        } else {
-            themeStore.setTheme(darkTheme);
-        }
+        themeStore.toggleTheme();
     };
 </script>
 
